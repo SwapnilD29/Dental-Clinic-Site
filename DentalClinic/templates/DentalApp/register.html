@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      Dentition
+    </title>
+    <!-- google font -->
+    <link
+      href="//fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Template CSS Style link -->
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+  </head>
+
+  <body>
+
+    {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} style="background-color:#198754; color:white; text-align:center; " class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+    <!-- header -->
+    <header id="site-header" class="fixed-top">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <a class="navbar-brand" href="/">
+            <i class="fas fa-tooth"></i>Dentition
+          </a>
+            </nav>
+          </div>
+          <!-- //toggle switch for light and dark theme -->
+        </nav>
+      </div>
+    </header>
+    <!-- //header -->
+
+    <!-- banner section -->
+    <section class="w3l-main-slider" id="home">
+      <div class="banner-content">
+        <div id="demo-1">
+          <div class="demo-inner-content">
+            <div class="container">
+              <div class="banner-info">
+                <h4><strong>Admin Registration</strong></h4> <br>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form-outline mb-4">
+                        <label class="form-label" style='color: #fff' for="{{form.username.id_for_label}}">User Name</label>
+                    
+                      <input type="text" name="username" id="{{form.username.id_for_label}}" class="form-control" />
+                  
+                      
+                    </div>
+                    <!-- Email input -->
+                    <div class="form-outline mb-4">
+                        <label class="form-label" style='color: #fff' for="{{form.email.id_for_label}}">Email</label>
+                       
+                      <input type="text" name="email" id="{{form.email.id_for_label}}" class="form-control" />
+                   
+                      
+                    </div>
+                  
+                    <!-- Password input -->
+                    <div class="form-outline mb-4">
+                        <label class="form-label" style='color: #fff' for="{{form.password1.id_for_label}}">Password</label>
+                       
+                      <input type="password" name="password1" id="{{form.password1.id_for_label}}" class="form-control" />
+                
+                    </div>
+
+                    <div class="form-outline mb-4">
+                        <label class="form-label" style='color: #fff' for="{{form.password2.id_for_label}}">Re-enter Password</label>
+                        
+                      <input type="password" name="password2" id="{{form.password2.id_for_label}}" class="form-control" />
+                  
+
+                      
+                    </div>
+                   {{form.errors}}
+                <!-- Submit button -->
+  <button type="submit" class="btn btn-primary btn-block mb-4">Register</button>
+  <p>Already registered? <a style="color: #069A8E" href="/login">Login</a></p>
+
+</form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
