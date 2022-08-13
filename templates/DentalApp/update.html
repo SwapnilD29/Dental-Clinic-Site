@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      Dentition
+    </title>
+    <!-- google font -->
+    <link
+      href="//fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Template CSS Style link -->
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+  </head>
+
+  <body>
+
+    {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} style="background-color:#198754; color:white; text-align:center; " class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+    <!-- header -->
+    <header id="site-header" class="fixed-top">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <a class="navbar-brand" href="/">
+            <i class="fas fa-tooth"></i>Dentition
+          </a>
+            </nav>
+          </div>
+          <!-- //toggle switch for light and dark theme -->
+        </nav>
+      </div>
+    </header>
+    <!-- //header -->
+
+    <!-- banner section -->
+    <section class="w3l-main-slider" id="home">
+      <div class="banner-content">
+        <div id="demo-1">
+          <div class="demo-inner-content">
+            <div class="container">
+                <h4>Admin Registration</h4> <br>
+                <form method="post">
+                    {%csrf_token%}
+
+                    {{ form.non_field_errors }}
+
+                    {% for hidden_field in form.hidden_fields %}
+                        {{ hidden_field.errors }}
+                        {{ hidden_field }}
+                    {% endfor %}
+
+                    <div class="row mb-1">
+                        <div class="col-md-6 mb-4">
+                            <label for="{{form.fullNAME.id_for_label}}" style="color:white" class="form-label">Your Name</label>
+                            {{form.fullNAME.errors}}
+                            <input type="text" name="fullName" value="{{patient.fullName}}" class="form-control" id="{{form.fullNAME.id_for_label}}" placeholder="Full Name" required="">
+                            {{form.fullNAME.help_text}}
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <label for="{{form.phoneNumber.id_for_label}}" style="color:white" class="form-label">Your Phone Number</label>
+                            {{form.phoneNumber.errors}}
+                            <input type="text" name="phoneNumber" value="{{patient.phoneNumber}}" class="form-control" placeholder="Contact Number" id= "{{form.phoneNumber.id_for_label}}" required="">
+                            {{form.phoneNumber.help_text}}
+                        </div>
+                    </div>
+                        <div class="mb-4 center-block ">
+                            <label for="{{form.service.id_for_label}}" style="color:white" class="form-label">Your Available Services</label>
+                            {{form.service.errors}}
+                            <select class="form-select" value="{{patient.service}}" name="service" id="{{form.service.id_for_label}}" aria-label="Default select example">
+                                <option selected>Select</option>
+                                <option value="Complete Whitening Pack">Complete Whitening Pack</option>
+                                <option value="Sedation Dentistry">Sedation Dentistry</option>
+                                <option value="Dental Cleaning">Dental Cleaning</option>
+                                <option value="Cosmetic Dentistry">Cosmetic Dentistry</option>
+                                <option value="Fissure Sealants">Fissure Sealants</option>
+                                <option value="Cleaning with Air Flow">Cleaning with Air Flow</option>
+                                <option value="Aligning the Teeth">Aligning the Teeth</option>
+                                <option value="Child’s First Dental Visit">Child’s First Dental Visit</option>
+                                <option value="Another">Another</option>
+                            </select>
+                            {{form.service.help_text}}
+                        </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <label for="{{form.date.id_for_label}}" style="color:white" class="form-label">Select Date</label>
+                            {{form.date.errors}}
+                            <input type="date" class="form-control" value="{{patient.date}}" name="date" id="{{form.date.id_for_label}}" required="">
+                            {{form.date.help_text}}
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <label for="{{form.time.id_for_label}}" style="color:white" class="form-label">{{ form.time.label_tag }}</label>
+                            {{form.time.errors}}
+                            <input type="time" class="form-control" value="{{patient.time}}" name="time" id="{{form.time.id_for_label}}" required="">
+                            {{form.time.help_text}}
+                        </div>
+                    </div>
+                    <div class="text-end">
+                        <button type='submit' class="btn btn-style mt-sm-3">Book Appointment</button>
+                    </div>
+                </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

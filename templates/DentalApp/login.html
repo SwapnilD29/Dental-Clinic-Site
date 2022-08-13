@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      Dentition
+    </title>
+    <!-- google font -->
+    <link
+      href="//fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Template CSS Style link -->
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+  </head>
+
+  <body>
+
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} style="background-color:#dc3545; color:white; text-align:center; " class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <!-- header -->
+    <header id="site-header" class="fixed-top">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <a class="navbar-brand" href="/">
+            <i class="fas fa-tooth"></i>Dentition
+          </a>
+            </nav>
+          </div>
+          <!-- //toggle switch for light and dark theme -->
+        </nav>
+      </div>
+    </header>
+    <!-- //header -->
+
+    <!-- banner section -->
+    <section class="w3l-main-slider" id="home">
+      <div class="banner-content">
+        <div id="demo-1">
+          <div class="demo-inner-content">
+            <div class="container">
+              <div class="banner-info">
+                <h4><strong>Admin Login</strong></h4> <br>
+                <form method="post">
+                  {% csrf_token %}
+                    <!-- Email input -->
+                    <div class="form-outline mb-4">
+                        <label class="form-label" style='color: #fff' for="form2Example1">User Name</label>
+                      <input type="text" name="username" id="id_username" class="form-control" />
+                      
+                    </div>
+                  
+                    <!-- Password input -->
+                    <div class="form-outline mb-4">
+                        <label class="form-label" style='color: #fff' for="form2Example2">Password</label>
+                      <input type="password" name="password" id="id_password" class="form-control" />
+                      
+                    </div>
+                <!-- Submit button -->
+  <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+  <p>Don't have an account? <a style="color:#069A8E" href="/register">Register</a></p>
+
+</form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
